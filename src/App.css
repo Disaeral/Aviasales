@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+body {
+  background-color: #e5e5e5;
+}
+
+.Vertical-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Horizontal-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.Header {
+  width: 100%;
+  height: 160px;
+  text-align: center;
+}
+
+.Sidebar {
+  width: 252px;
+  height: 252px;
+  background-color: #fff;
+  margin: 0px 20px 0px 103px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+}
+
+.Sidebar-header {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 12px;
+  margin: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #4a4a4a;
+}
+
+.Sidebar-item {
+  line-height: 20px;
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 20px;
+  height: 40px;
+  width: calc(100%-1px);
+
+  display: flex;
+  align-items: center;
+  text-transform: none;
+}
+
+.Sidebar-item:hover {
+  cursor: pointer;
+  background: #f1fcff;
+}
+
+.Sidebar-item input[type="checkbox"] {
+  display: none;
+}
+
+.Sidebar-item label {
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.Sidebar-item input[type="checkbox"] + label::before {
+  content: "";
+  width: 20px;
+  display: inline-block;
+  height: 20px;
+  margin-right: 10px;
+  border: 1px solid #9abbce;
+  box-sizing: border-box;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
+.Sidebar-item input[type="checkbox"]:checked + label::before {
+  border: 1px solid #2196f3;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.28571 8L0 4.16123L1.20857 3.0787L4.28571 5.82726L10.7914 0L12 1.09021L4.28571 8Z' fill='%232196F3'/%3E%3C/svg%3E%0A");
+}
+
+.Main {
+  width: 502px;
+}
+
+.Switch {
+  width: 504px;
+  height: 50px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+
+.Switch-active {
+  padding-top: calc(50px / 4);
+  background-color: #2196f3;
+  color: #fff;
+  border: 1px solid #dfe5ec;
+  flex-grow: 1;
+  cursor: pointer;
+  text-align: center;
+
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.Switch-disabled {
+  padding-top: calc(50px / 4);
+  background-color: #fff;
+  color: #000;
+  flex-grow: 1;
+  border: 1px solid #dfe5ec;
+
+  cursor: pointer;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.left {
+  border-radius: 5px 0px 0px 5px;
+}
+.right {
+  border-radius: 0px 5px 5px 0px;
+}
+
+#tickets {
+  cursor: pointer;
+  color: #e5e5e5;
+  background-color: #2196f3;
+  max-height: 18px;
+  border-radius: 4px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 3px 5px 9px 5px;
+  margin: 2px;
+}
+
+.Ticket {
+  width: 502px;
+  height: 184px;
+  min-height: 122px;
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  margin-bottom: 20px;
+  flex-direction: column;
+  justify-content: space-evenly;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.Ticket-header {
+  height: 36px;
+  width: 432px;
+  background-color: #fff;
+
+  margin: 0px 50px 0px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Ticket-info {
+  width: 462px;
+  color: #f4f4f4;
+  margin: 0px 20px 0px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Route,
+.Stops,
+.Length {
+  width: calc((342px) / 3);
+}
+
+.Hide {
+  display: hidden;
+}
+
+.Cost {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 24px;
+  color: #2196f3;
+}
+
+#Upper,
+#Lower {
+  display: flex;
+  align-items: center;
+}
+
+#Upper {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #a0b0b9;
+}
+
+#Lower {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #4a4a4a;
+}
