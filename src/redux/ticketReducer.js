@@ -2,6 +2,7 @@ import { filterTickets } from "./filterTickets";
 import { sortByPrice, sortByTime } from "./sortTickets";
 import {
   FILTER_TICKETS,
+  GET_SEARCH_ID,
   LOAD_TICKETS,
   RESET_FILTER,
   SORT_TICKETS_BY_PRICE,
@@ -9,17 +10,26 @@ import {
 } from "./types";
 
 const initialState = {
-  loaded: false,
+  isLoading: false,
   tickets: [],
+  originalTickets: []
 };
 
 export const ticketReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GET_SEARCH_ID:
+      console.log(action.payload)
+      return {
+        ...state,
+        searchId:action.payload.searchId
+      }
     case LOAD_TICKETS:
       return {
         ...state,
-        tickets: state.tickets.concat(action.payload),
-        loaded: !state.loaded,
+        originalTickets:state.originalTickets.concat(action.payload.tickets),
+        tickets: state.tickets.concat(action.payload.tickets),
+        isLoading: !state.isLoading,
+        stop: action.payload.stop,
       };
     case FILTER_TICKETS:
       return {
@@ -27,7 +37,7 @@ export const ticketReducer = (state = initialState, action) => {
         tickets: filterTickets(state.tickets, action.payload),
       };
     case RESET_FILTER:
-      return { ...state, tickets: initialState.tickets };
+      return { ...state, tickets: state.originalTickets };
     case SORT_TICKETS_BY_TIME:
       return { ...state, tickets: sortByTime(state.tickets) };
     case SORT_TICKETS_BY_PRICE:

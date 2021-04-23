@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Ticket from "./Ticket.js";
 
 const Tickets = ({ tickets }) => {
+  tickets = tickets.slice(0, 5)
   return tickets.map((ticket, i) => {
     return <Ticket key={i} ticket={ticket} segments={ticket.segments} />;
   });

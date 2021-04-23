@@ -23,8 +23,9 @@ const SidebarItem = ({ value, name, notChecked, checkboxes }) => {
             filterCheckboxes(checkboxes);
           } else if (!notChecked) {
             notChecked = !notChecked;
-            dispatch(uncheck(value));
-            if (filterCheckboxes(checkboxes).length === 0) {
+            dispatch(uncheck(value))
+            dispatch(resetFilter());
+            if (filterCheckboxes(checkboxes).length !== 0) {
               dispatch(resetFilter());
             }
           }
