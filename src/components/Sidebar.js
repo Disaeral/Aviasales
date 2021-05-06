@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import SidebarItem from "../components/SidebarItem.js";
 
 const Sidebar = ({ checkboxes }) => {
@@ -11,17 +11,20 @@ const Sidebar = ({ checkboxes }) => {
     "3 и более",
   ];
   const values = [4, 0, 1, 2, 3];
-
+  const dispatch = useDispatch()
+  const filteredCheckboxes = checkboxes.filter((checkbox) => checkbox.checked);
   return (
     <div className="Sidebar">
       <div className="Sidebar-header">Количество пересадок</div>
       <form>
         {names.map((name, i) => {
-          return (
+           return (
             <SidebarItem
+              checked={checkboxes[i].checked}
               checkboxes={checkboxes}
-              notChecked={checkboxes[i]}
+              
               key={i}
+              id={i}
               name={name}
               value={values[i]}
             />
@@ -33,9 +36,10 @@ const Sidebar = ({ checkboxes }) => {
 };
 
 const mapStateToProps = (state) => {
+  
   return {
     checkboxes: state.checkboxes.checkboxes,
   };
 };
 
-export default connect(mapStateToProps)(Sidebar);
+export default connect(mapStateToProps, null)(Sidebar);

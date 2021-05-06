@@ -5,6 +5,7 @@ import {
   GET_SEARCH_ID,
   LOAD_TICKETS,
   REQUEST_TICKETS,
+  RESET_BY_ID,
   RESET_FILTER,
   SORT_TICKETS_BY_PRICE,
   SORT_TICKETS_BY_TIME,
@@ -34,6 +35,12 @@ export function resetFilter() {
     type: RESET_FILTER,
   };
 }
+export function resetFilterById(id) {
+  return {
+    type: RESET_BY_ID,
+    payload: id
+  }
+}
 export function switchLeft() {
   return {
     type: SWITCH_LEFT,
@@ -62,55 +69,35 @@ export function requestTickets() {
   };
 }
 export function getId() {
-  return  function (dispatch) {
+  return function (dispatch) {
     dispatch({
       type: GET_SEARCH_ID,
       payload: getSearchId(),
     });
   };
 }
-export function loadTickets2 (searchId) {
-  return  function (dispatch) {
-    if (searchId) {
-      dispatch({
-        type:LOAD_TICKETS,
-        payload: getTickets(searchId)
-      })
-    }
-    else {
-      console.log('fuck you')
-    }
-  }
-}
+
 export function loadTickets() {
   return function (dispatch) {
-    fetch('https://front-test.beta.aviasales.ru/search')
-    .then(
-      res=>res.json()
-    ).then(
-      data=>{
-        const searchId = data.searchId
-        fetch('https://front-test.beta.aviasales.ru/tickets?searchId=' + searchId)
-          .then(
-            res=>res.json()
-          )
-          .then(
-            data=>{
+    fetch("https://front-test.beta.aviasales.ru/search")
+      .then((res) => res.json())
+      .then((data) => {
+        const searchId = data.searchId;
+        fetch(
+          "https://front-test.beta.aviasales.ru/tickets?searchId=" + searchId
+        )
+          .then((res) => res.json())
+          .then((data) => {
             dispatch({
-              type:LOAD_TICKETS,
+              type: LOAD_TICKETS,
               payload: {
-                tickets:data.tickets,
-                stop: data.stop
-              }
-            })
-          if (!data.stop) {
-            
-          }
-          }
-
-          )
-      }
-      
-    )
+                tickets: data.tickets,
+                stop: data.stop,
+              },
+            });
+            if (!data.stop) {
+            }
+          });
+      });
   };
 }
