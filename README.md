@@ -3,3 +3,4 @@ Frontend тестовое задание Aviasales -> https://github.com/KosyanM
 Использовал React, Redux (+middleware).
 Development build "yarn start", для сборки в Production build "yarn build".
 Скриншоты
+![Alt text](/screenshots/aviasalesScreenshot1.png?raw=true "Screenshot 1")
